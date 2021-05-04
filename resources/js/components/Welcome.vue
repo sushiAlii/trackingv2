@@ -15,7 +15,7 @@
                         >Sign in</h1>
                         <div class="text-center mt-4">
                         </div>
-                        <v-form>
+                        <v-form @submit.prevent="handleLogin">
                           <v-text-field
                             label="Email"
                             name="email"
@@ -36,13 +36,13 @@
                             v-model="formData.password"
                             :error-messages="errors.password"
                           />
+                          <h3 class="text-center mt-4">Forgot your password?</h3>
+                            <div class="text-center mt-3">
+                              <v-btn rounded color="red darken-3" dark type="submit">SIGN IN</v-btn>
+                            </div>  
                         </v-form>
-                        <h3 class="text-center mt-4">Forgot your password?</h3>
                       </v-card-text>
-                      <div class="text-center mt-3">
-                        <v-btn rounded color="red darken-3" dark @click="handleLogin">SIGN IN</v-btn>
-                      </div>
-                      <div class="py-3"/>
+                    
                     </v-col>
                     <v-col cols="12" md="4" class="red darken-3">
                       <v-card-text class="white--text mt-12">
@@ -59,7 +59,7 @@
                 </v-window-item>
                 <v-window-item :value="2">
                   <v-row class="fill-height">
-                    <v-col cols="12" md="4" class="red lighten-3">
+                    <v-col cols="12" md="4" class="red darken-3">
                       <v-card-text class="white--text mt-12">
                         <h1 class="text-center display-1">Login Here!</h1>
                         <h5
@@ -73,7 +73,7 @@
 
                     <v-col cols="12" md="8">
                       <v-card-text class="mt-12">
-                        <h1 class="text-center display-2 red--text text--lighten-3">Track Your Document!</h1>
+                        <h1 class="text-center display-2 red--text text--darken-3">Track Your Document!</h1>
                         <div class="text-center mt-4">
                         </div>
                         <h4 class="text-center mt-4">Enter a PPMP code here!</h4>
@@ -83,13 +83,13 @@
                             name="Name"
                             prepend-icon="mdi-bike-fast"
                             type="text"
-                            color="red lighten-3"
+                            color="red darken-3"
                           />
+                          <div class="text-center mt-n5">
+                            <v-btn rounded color="red darken-3" dark>TRACK</v-btn>
+                          </div>
                         </v-form>
                       </v-card-text>
-                      <div class="text-center mt-n5">
-                        <v-btn rounded color="red lighten-3" dark>TRACK</v-btn>
-                      </div>
                       <div class="py-3"/>
                     </v-col>
                   </v-row>
@@ -104,20 +104,6 @@
 </template>
 
 <script>
-/*export default{
-    props: {
-        source: String
-    },
-    data() {
-        return {
-            step: 1,
-            email: '',
-            password: '',
-        }
-    },
-    
-}
-*/
 
 export default {
     name: 'App',
@@ -150,16 +136,5 @@ export default {
         
         }
     }
-}
+  }
 </script>
-
-<!----handleLogin(){
-            axios.post('/api/login', this.formData)
-            .then(response => {
-                localStorage.setItem('token', response.data)
-            })
-            .catch(errors => {
-                this.errors = errors.response.data.errors;
-                console.log(errors);
-            });
-        }
