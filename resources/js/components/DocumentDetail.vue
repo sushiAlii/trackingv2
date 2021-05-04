@@ -42,6 +42,8 @@
                                 <v-data-table
                                 :headers="headers"
                                 :items="details"
+                                :loading="loadingvariable"
+                                loading-text="Loading.. Please wait a moment"
                                 :search="search"
                                 ></v-data-table>
                         </v-card>
@@ -71,18 +73,17 @@
 
 import Navbar from './Navbar'
 import Tracking from './Tracking'
-import OrderDetail from './OrderDetail'
 
 export default {
     name: 'App',
     components: {
         Navbar,
-        OrderDetail,
         Tracking
     },
     data(){
         return{
             search: '',
+            loadingvariable: true,
             details: [],
             ppmps: [],
             travels: [],
@@ -94,7 +95,7 @@ export default {
                 },
                 { text: 'Price', value: 'price' },
                 { text: 'Quantity', value: 'quantity' },
-                { text: 'Amount', value: 'total' },
+                { text: 'Amount', align: 'end', value: 'total' },
             ],
             items: [
                 {
@@ -120,8 +121,10 @@ export default {
     },
     methods:{
         loadDetails: function(id){
+            this.loadingvariable=true;
             axios.get('/api/documents/details/id='+id)
             .then((response) => {
+                this.loadingvariable=false;
                 this.details = response.data.data;
                 console.log(response.data.data);
             })

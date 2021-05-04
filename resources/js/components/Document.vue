@@ -14,23 +14,26 @@
                 </v-card>
             </v-container>
             <v-container class="my-5">
-                <v-card>
-                    <v-card-title>
-                        PPMP
+                <base-material-card
+                    icon="mdi-clipboard-text"
+                    title="PPMP"
+                    class="px-5 py-3 mt-5"
+                >
+                
                     <v-spacer></v-spacer>
                         <v-text-field v-model="search" append-icon="mdi-magnify" label="Search..." single-line hide-details>
                         </v-text-field>
-                    </v-card-title>
+                    
                     <v-data-table 
                     :headers="headers" 
-                    :items="documents" 
+                    :items="ppmp" 
                     :search="search" 
                     :loading="loadingvariable" 
                     loading-text="Loading.. Please wait a moment" 
                     @click:row="onRowClick"
                     >
                     </v-data-table>
-                </v-card>
+                </base-material-card>
             </v-container>
         </v-main>
     </v-app>
@@ -45,7 +48,7 @@ export default {
     },
     data(){
         return{
-            documents: [],
+            ppmp: [],
             loadingvariable: true,
             search: '',
             headers: [
@@ -54,24 +57,25 @@ export default {
                     align: 'start',
                     value: 'title',
                 },
-                {text: 'Account Code', value: 'account_code'},
-                {text: 'Type', value: 'type'},
-                {text: 'Total', value: 'total'},
+                { text: 'Account Code', value: 'account_code' },
+                { text: 'Type', value: 'type' },
+                { text: 'Cost Center', value: 'owner' },
+                { text: 'Total', align: 'end', value: 'total' },
             ],
         }
     },
 
     mounted(){
-        this.loadDocuments();
+        this.loadPPMP();
     },
 
     methods: {
-        loadDocuments: function(){
+        loadPPMP: function(){
             this.loadingvariable=true;
             axios.get('/api/documents')
             .then((response) => {
                 this.loadingvariable=false;
-                this.documents = response.data.data;
+                this.ppmp = response.data.data;
             })
             .catch()
                 

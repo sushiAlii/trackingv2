@@ -19,7 +19,7 @@
                 </v-list-item-avatar>
                 <v-list-item-content>
                 <v-list-item-title>
-                    {{ currentUser.email }}
+                    {{ currentUser.name }}
                 </v-list-item-title>
                 <v-list-item-subtitle>
                     Logged In
@@ -44,6 +44,32 @@
                         <v-list-item-title>My Documents</v-list-item-title>
                     </v-list-item-content>
                 </v-list-item>
+                <v-list-item link to="/manage_users" style="text-decoration: none">
+                    <v-list-item-action>
+                        <v-icon>mdi-account-multiple</v-icon>
+                    </v-list-item-action>
+                    <v-list-item-content>
+                        <v-list-item-title>Manage Users</v-list-item-title>
+                    </v-list-item-content>
+                </v-list-item>
+                <v-list-item link to="/scan" style="text-decoration: none">
+                    <v-list-item-action>
+                        <v-icon>mdi-qrcode-scan</v-icon>
+                    </v-list-item-action>
+                    <v-list-item-content>
+                        <v-list-item-title>Scan a Code</v-list-item-title>
+                    </v-list-item-content>
+                </v-list-item>
+                <!---
+                <v-list-item link to="/offices" style="text-decoration: none">
+                    <v-list-item-action>
+                        <v-icon>mdi-briefcase</v-icon>
+                    </v-list-item-action>
+                    <v-list-item-content>
+                        <v-list-item-title>Offices</v-list-item-title>
+                    </v-list-item-content>
+                </v-list-item>
+                ----->
                 <v-list-item link @click="logout">
                     <v-list-item-action>
                         <v-icon color="red">mdi-power</v-icon>
@@ -67,6 +93,8 @@
                 links: [
                     { icon: 'mdi-view-dashboard', text: 'Dashboard', route: '/' },
                     { icon: 'mdi-folder', text: 'My Documents', route: '/documents' },
+                    { icon: 'mdi-account-multiple', text: 'Manage Users', route: '/manage_users' },
+                    { icon: 'qrcode-scan', text: 'Scan a Code', route: 'scan' }
                 ]
             }
         },
