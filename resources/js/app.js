@@ -12,6 +12,7 @@ window.Vue = require('vue').default;
 import VueRouter from 'vue-router'
 import router from './router'
 import Vuetify from "../plugins/vuetify"
+import Vue from 'vue';
 
 /**
  * The following block of code may be used to automatically register your
@@ -27,6 +28,10 @@ import Vuetify from "../plugins/vuetify"
 Vue.component('home-component', require('./components/Home.vue').default);
 Vue.component('navbar-component', require('./components/Navbar.vue').default);
 Vue.component('welcome-component', require('./components/Welcome.vue').default);
+
+//base components
+
+Vue.component('base-material-card', require('./components/base/MaterialCard.vue').default);
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to

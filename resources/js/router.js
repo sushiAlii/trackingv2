@@ -6,7 +6,9 @@ import Home from './components/Home.vue'
 import Documents from './components/Document.vue'
 import DocumentDetails from './components/DocumentDetail.vue'
 import Tracking from './components/Tracking.vue'
-import OrderDetail from './components/OrderDetail.vue'
+import Scan from './components/Scan.vue'
+import ManageUsers from './components/ManageUsers.vue'
+import Office from './components/Office.vue'
 
 
 
@@ -43,8 +45,28 @@ Vue.use(VueRouter)
         {
             path: '/documents/tracking/:id',
             name: 'tracking',
+            meta: { requiresAuth: true },
             component: Tracking
         },
+        {
+            path: '/manage_users',
+            name: 'manage_user',
+            meta: { requiresAuth: true },
+            component: ManageUsers
+        },
+        {
+            path: '/scan',
+            name: 'scan',
+            meta: { requiresAuth: true },
+            component: Scan
+        },
+        {
+            path: '/offices',
+            name: 'office',
+            meta: { requiresAuth: true },
+            component: Office
+        }
+        
 
     ]
 
