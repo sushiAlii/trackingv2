@@ -28,7 +28,7 @@ class DocumentDetailController extends Controller
     }
 
     public function showPPMPTravels($id){
-        return PPMPTravelLogResource::collection(PpmpTravelLog::select('ppmp_travel_logs.id','ppmp_travel_logs.ppmp_id','ppmp_travel_logs.date_arrived','ppmp_travel_logs.office')
+        return PpmpTravelLogResource::collection(PpmpTravelLog::select('ppmp_travel_logs.id','ppmp_travel_logs.ppmp_id','ppmp_travel_logs.date_arrived','ppmp_travel_logs.office')
                                 ->where('ppmp_travel_logs.ppmp_id',$id)->orderByDesc('ppmp_travel_logs.date_arrived')->get());
     }
 }
