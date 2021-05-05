@@ -31,9 +31,9 @@ Route::get(uri: '/manage_users', action: [App\Http\Controllers\Api\UserControlle
 Route::get(uri: '/offices',action: [App\Http\Controllers\Api\OfficeController::class, 'index']);
 
 Route::get(uri: 'documents', action: [App\Http\Controllers\Api\PPMPController::class, 'index']);
-Route::get(uri: 'documents/tracking/id={id}', action: [App\Http\Controllers\Api\DocumentDetailController::class, 'showPPMPTravels']);
+Route::get(uri: 'documents/tracking/id={id}', action: [App\Http\Controllers\Api\PPMPTravelLogController::class, 'show']);
 
-Route::get(uri: 'documents/details/id={id}', action: [App\Http\Controllers\Api\PPMPTravelLogController::class, 'show']);
+Route::get(uri: 'documents/details/id={id}', action: [App\Http\Controllers\Api\DocumentDetailController::class, 'showPPMPDetails']);
 Route::get(uri: 'documents/details/ppmp={id}', action: [App\Http\Controllers\Api\DocumentController::class, 'ppmpWithId']);
 
 Route::post(uri: '/scan', action: [App\Http\Controllers\Api\PPMPTravelLogController::class, 'store']);
