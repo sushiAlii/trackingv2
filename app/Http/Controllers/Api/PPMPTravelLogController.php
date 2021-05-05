@@ -6,7 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Auth;
 
-use App\Http\Resources\PpmpTravelLogResource;
+use App\Http\Resources\LogResource;
 use App\Models\PpmpTravelLog;
 use App\Models\Ppmp;
 use App\Models\User;
@@ -15,7 +15,7 @@ class PPMPTravelLogController extends Controller
 {
 
     public function show($id){
-        return PpmpTravelLogResource::collection(PpmpTravelLog::select('ppmp_travel_logs.id','ppmp_travel_logs.ppmp_id','ppmp_travel_logs.date_arrived','ppmp_travel_logs.office')
+        return LogResource::collection(PpmpTravelLog::select('ppmp_travel_logs.id','ppmp_travel_logs.ppmp_id','ppmp_travel_logs.date_arrived','ppmp_travel_logs.office')
                                 ->where('ppmp_travel_logs.ppmp_id',$id)->orderByDesc('ppmp_travel_logs.date_arrived')->get());
     }
     public function store(Request $request){
