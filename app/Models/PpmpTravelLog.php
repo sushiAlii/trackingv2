@@ -9,6 +9,8 @@ class PpmpTravelLog extends Model
 {
     use HasFactory;
 
+    protected $fillable = ['task'];
+
     protected $guarded = [
         'date_arrived',
         'office',
