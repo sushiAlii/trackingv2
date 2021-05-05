@@ -36,7 +36,6 @@
                             v-model="formData.password"
                             :error-messages="errors.password"
                           />
-                          <h3 class="text-center mt-4">Forgot your password?</h3>
                             <div class="text-center mt-3">
                               <v-btn rounded color="red darken-3" dark type="submit">SIGN IN</v-btn>
                             </div>  
