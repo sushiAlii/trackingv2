@@ -2,6 +2,12 @@
     <v-app>
         <Navbar/>
         <v-main class="mx-4 my-5">
+                <v-alert type="error" :value="error" transition = "scale-transition">
+                    [Scan Error] PPMP Code not found!
+                </v-alert>
+                <v-alert type="success" :value="success" transition = "scale-transition">
+                    Scan successful! 
+                </v-alert>
             <v-container>
                 <v-col cols="12" md="12">
                       <v-card-text class="mt-12">
@@ -47,10 +53,15 @@ import Navbar from './Navbar'
                 id: '',
                 email: '',
             },
-            errors: {}
+            errors: {},
+            success: false,
+            error: false
         }
     },
     mounted(){
+        if(alert){
+            this.hideAlert();
+        }
     },
 
     created(){
@@ -63,8 +74,15 @@ import Navbar from './Navbar'
         handleScan: function(){
             axios.post('/api/scan', {code: this.formData, id: this.currentUser.id})
             .then(response => {
-                console.log(response);
+                console.log(response.data);
                 this.$refs.form.reset();
+                if(response.data == "Scan Successful"){
+                    this.success = true;
+                    console.log('success');
+                }
+                else{
+                    this.error = true;
+                }
             })
             .catch(errors => {
                 console.log(errors);
@@ -81,6 +99,13 @@ import Navbar from './Navbar'
                 console.log(errors);
             });
         },
+        hideAlert: function(event){
+            console.log('Hide')
+            window.setInterval(() => {
+                this.success = false;
+                this.error = false;
+            }, 3000)
+        }
     }
 
 }

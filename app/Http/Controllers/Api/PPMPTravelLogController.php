@@ -38,6 +38,6 @@ class PPMPTravelLogController extends Controller
 
                 return ('Scan Successful');
             }
-        return ('Scan Failed');
+        return ('Scan Failed! PPMP Code not found');
     }
 }
