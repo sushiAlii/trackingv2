@@ -29,6 +29,7 @@ Route::post(uri: '/logout', action: [App\Http\Controllers\Api\Auth\AuthControlle
 Route::get(uri: '/manage_users', action: [App\Http\Controllers\Api\UserController::class, 'index']);
 
 Route::get(uri: '/offices',action: [App\Http\Controllers\Api\OfficeController::class, 'index']);
+Route::get(uri: '/offices/graph', action: [App\Http\Controllers\Api\OfficeController::class, 'office_graphs']);
 
 Route::get(uri: 'documents', action: [App\Http\Controllers\Api\PPMPController::class, 'index']);
 Route::get(uri: 'documents/tracking/id={id}', action: [App\Http\Controllers\Api\PPMPTravelLogController::class, 'show']);
