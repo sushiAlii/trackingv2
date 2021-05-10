@@ -22,6 +22,7 @@ class CreatePpmpsTable extends Migration
             $table->string('type');
             $table->integer('status');
             $table->string('mode_of_procurement');
+            $table->string('cur_location')->nullable();
             $table->unsignedBigInteger('source_of_fund_id');
             $table->timestamps();
         });

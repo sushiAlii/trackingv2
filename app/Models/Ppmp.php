@@ -16,6 +16,7 @@ class Ppmp extends Model
         'type',
         'status',
         'mode_of_procurement',
+        'cur_location',
         'source_of_fund_id'
     ];
 
