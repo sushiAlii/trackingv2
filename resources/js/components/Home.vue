@@ -18,7 +18,7 @@
                         :data="officeChart.data"
                         :options="officeChart.options"
                         :responsive-options="officeChart.responsiveOptions"
-                        color="#E91E63"  
+                        color="red darken-3"  
                         hover-reveal
                         type="Bar"
                         >
@@ -60,12 +60,14 @@ export default {
     },
     data(){
         return {
+            offices: [],
+            count: [],
             officeChart: {
                 data: {
                     labels: [],
                     series: [
-                        [0,0,0],
-                    ],
+                        [0],
+                    ]
                 },
                 options: {
                     axisX: {
@@ -95,20 +97,23 @@ export default {
     },
     mounted(){
         this.loadGraphLabels();
-        console.log('hi');
     },
     methods:{
         loadGraphLabels: function(){
             console.log('hi');
             axios.get('api/offices/graph')
                 .then((response) => {
-                console.log(response);
-                for(let i = 0;i<response.data.length;i++){
-                    this.officeChart.data.labels[i] = response.data[i].office_name;
-                    this.officeChart.data.series[0][i] = response.data[i].count;
-                }
-            console.log(this.officeChart.data.labels);
-            console.log(this.officeChart.data.series);
+                    for(let i = 0;i<response.data.length;i++){
+                        this.offices[i] = response.data[i].office_name;
+                        this.count[i] = response.data[i].count;
+                        console.log(this.offices);
+                        console.log(this.count);   
+                    }
+                this.officeChart.data.labels = this.offices;
+                this.officeChart.data.series[0] = this.count;
+            //console.log(response.data)
+            //console.log(this.officeChart.data.labels);
+            console.log(this.officeChart.data.series[0]);
             })
         }
     },

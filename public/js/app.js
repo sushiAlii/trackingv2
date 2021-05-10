@@ -2188,10 +2188,12 @@ __webpack_require__.r(__webpack_exports__);
   },
   data: function data() {
     return {
+      offices: [],
+      count: [],
       officeChart: {
         data: {
           labels: [],
-          series: [[0, 0, 0]]
+          series: [[0]]
         },
         options: {
           axisX: {
@@ -2219,7 +2221,6 @@ __webpack_require__.r(__webpack_exports__);
   },
   mounted: function mounted() {
     this.loadGraphLabels();
-    console.log('hi');
   },
   methods: {
     loadGraphLabels: function loadGraphLabels() {
@@ -2227,15 +2228,18 @@ __webpack_require__.r(__webpack_exports__);
 
       console.log('hi');
       axios.get('api/offices/graph').then(function (response) {
-        console.log(response);
-
         for (var i = 0; i < response.data.length; i++) {
-          _this.officeChart.data.labels[i] = response.data[i].office_name;
-          _this.officeChart.data.series[0][i] = response.data[i].count;
+          _this.offices[i] = response.data[i].office_name;
+          _this.count[i] = response.data[i].count;
+          console.log(_this.offices);
+          console.log(_this.count);
         }
 
-        console.log(_this.officeChart.data.labels);
-        console.log(_this.officeChart.data.series);
+        _this.officeChart.data.labels = _this.offices;
+        _this.officeChart.data.series[0] = _this.count; //console.log(response.data)
+        //console.log(this.officeChart.data.labels);
+
+        console.log(_this.officeChart.data.series[0]);
       });
     }
   }
@@ -47362,7 +47366,7 @@ var render = function() {
                             options: _vm.officeChart.options,
                             "responsive-options":
                               _vm.officeChart.responsiveOptions,
-                            color: "#E91E63",
+                            color: "red darken-3",
                             "hover-reveal": "",
                             type: "Bar"
                           },
