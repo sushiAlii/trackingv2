@@ -12,6 +12,7 @@ window.Vue = require('vue').default;
 import VueRouter from 'vue-router'
 import router from './router'
 import Vuetify from "../plugins/vuetify"
+import chartist from "../plugins/chartist"
 import Vue from 'vue';
 
 /**
@@ -32,6 +33,7 @@ Vue.component('welcome-component', require('./components/Welcome.vue').default);
 //base components
 
 Vue.component('base-material-card', require('./components/base/MaterialCard.vue').default);
+Vue.component('base-material-chart-card', require('./components/base/MaterialChartCard.vue').default);
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to
@@ -43,6 +45,7 @@ Vue.use(VueRouter);
 
 const app = new Vue({
     vuetify: Vuetify,
+    chartist: chartist,
     el: '#app',
     router
 });

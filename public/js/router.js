@@ -306,11 +306,105 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   name: 'App',
   components: {
     Navbar: _Navbar__WEBPACK_IMPORTED_MODULE_0__.default
+  },
+  data: function data() {
+    return {
+      officeChart: {
+        data: {
+          labels: [],
+          series: [[0, 0, 0]]
+        },
+        options: {
+          axisX: {
+            showGrid: false
+          },
+          low: 0,
+          high: 10,
+          chartPadding: {
+            top: 0,
+            right: 5,
+            bottom: 0,
+            left: 0
+          }
+        },
+        responsiveOptions: [['screen and (max-width: 640px)', {
+          seriesBarDistance: 5,
+          axisX: {
+            labelInterpolationFnc: function labelInterpolationFnc(value) {
+              return value[0];
+            }
+          }
+        }]]
+      }
+    };
+  },
+  mounted: function mounted() {
+    this.loadGraphLabels();
+    console.log('hi');
+  },
+  methods: {
+    loadGraphLabels: function loadGraphLabels() {
+      var _this = this;
+
+      console.log('hi');
+      axios.get('api/offices/graph').then(function (response) {
+        console.log(response);
+
+        for (var i = 0; i < response.data.length; i++) {
+          _this.officeChart.data.labels[i] = response.data[i].office_name;
+          _this.officeChart.data.series[0][i] = response.data[i].count;
+        }
+
+        console.log(_this.officeChart.data.labels);
+        console.log(_this.officeChart.data.series);
+      });
+    }
   }
 });
 
@@ -4352,11 +4446,83 @@ var render = function() {
       _vm._v(" "),
       _c(
         "v-main",
-        { staticClass: "mx-4 my-5" },
+        { staticClass: "mx-4 mt-5" },
         [
           _c("h1", [_vm._v("Dashboard")]),
           _vm._v(" "),
-          _c("v-container", { staticClass: "my-5" }, [_vm._v("Content")])
+          _c(
+            "v-container",
+            {
+              staticClass: "mt-10",
+              attrs: { id: "dashboard", fluid: "", tag: "section" }
+            },
+            [
+              _c(
+                "v-row",
+                [
+                  _c(
+                    "v-col",
+                    { attrs: { cols: "12", lg: "4" } },
+                    [
+                      _c(
+                        "base-material-chart-card",
+                        {
+                          attrs: {
+                            data: _vm.officeChart.data,
+                            options: _vm.officeChart.options,
+                            "responsive-options":
+                              _vm.officeChart.responsiveOptions,
+                            color: "#E91E63",
+                            "hover-reveal": "",
+                            type: "Bar"
+                          },
+                          scopedSlots: _vm._u([
+                            {
+                              key: "actions",
+                              fn: function() {
+                                return undefined
+                              },
+                              proxy: true
+                            }
+                          ])
+                        },
+                        [
+                          _c(
+                            "h4",
+                            {
+                              staticClass:
+                                "card-title font-weight-light mt-2 ml-2"
+                            },
+                            [
+                              _vm._v(
+                                "\n                        Documents in Offices\n                    "
+                              )
+                            ]
+                          ),
+                          _vm._v(" "),
+                          _c(
+                            "p",
+                            {
+                              staticClass:
+                                "d-inline-flex font-weight-light ml-2 mt-1"
+                            },
+                            [
+                              _vm._v(
+                                "\n                        PPMP\n                    "
+                              )
+                            ]
+                          )
+                        ]
+                      )
+                    ],
+                    1
+                  )
+                ],
+                1
+              )
+            ],
+            1
+          )
         ],
         1
       )
@@ -20927,8 +21093,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _node_modules_vuetify_loader_lib_runtime_installComponents_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! !../../../node_modules/vuetify-loader/lib/runtime/installComponents.js */ "./node_modules/vuetify-loader/lib/runtime/installComponents.js");
 /* harmony import */ var _node_modules_vuetify_loader_lib_runtime_installComponents_js__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_node_modules_vuetify_loader_lib_runtime_installComponents_js__WEBPACK_IMPORTED_MODULE_3__);
 /* harmony import */ var vuetify_lib_components_VApp__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! vuetify/lib/components/VApp */ "./node_modules/vuetify/lib/components/VApp/VApp.js");
-/* harmony import */ var vuetify_lib_components_VGrid__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! vuetify/lib/components/VGrid */ "./node_modules/vuetify/lib/components/VGrid/VContainer.js");
-/* harmony import */ var vuetify_lib_components_VMain__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! vuetify/lib/components/VMain */ "./node_modules/vuetify/lib/components/VMain/VMain.js");
+/* harmony import */ var vuetify_lib_components_VGrid__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! vuetify/lib/components/VGrid */ "./node_modules/vuetify/lib/components/VGrid/VCol.js");
+/* harmony import */ var vuetify_lib_components_VGrid__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! vuetify/lib/components/VGrid */ "./node_modules/vuetify/lib/components/VGrid/VContainer.js");
+/* harmony import */ var vuetify_lib_components_VMain__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! vuetify/lib/components/VMain */ "./node_modules/vuetify/lib/components/VMain/VMain.js");
+/* harmony import */ var vuetify_lib_components_VGrid__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! vuetify/lib/components/VGrid */ "./node_modules/vuetify/lib/components/VGrid/VRow.js");
 
 
 
@@ -20952,7 +21120,9 @@ var component = (0,_node_modules_vue_loader_lib_runtime_componentNormalizer_js__
 
 
 
-_node_modules_vuetify_loader_lib_runtime_installComponents_js__WEBPACK_IMPORTED_MODULE_3___default()(component, {VApp: vuetify_lib_components_VApp__WEBPACK_IMPORTED_MODULE_4__.default,VContainer: vuetify_lib_components_VGrid__WEBPACK_IMPORTED_MODULE_5__.default,VMain: vuetify_lib_components_VMain__WEBPACK_IMPORTED_MODULE_6__.default})
+
+
+_node_modules_vuetify_loader_lib_runtime_installComponents_js__WEBPACK_IMPORTED_MODULE_3___default()(component, {VApp: vuetify_lib_components_VApp__WEBPACK_IMPORTED_MODULE_4__.default,VCol: vuetify_lib_components_VGrid__WEBPACK_IMPORTED_MODULE_5__.default,VContainer: vuetify_lib_components_VGrid__WEBPACK_IMPORTED_MODULE_6__.default,VMain: vuetify_lib_components_VMain__WEBPACK_IMPORTED_MODULE_7__.default,VRow: vuetify_lib_components_VGrid__WEBPACK_IMPORTED_MODULE_8__.default})
 
 
 /* hot reload */

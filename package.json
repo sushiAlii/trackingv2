@@ -28,6 +28,7 @@
     },
     "dependencies": {
         "material-design-icons-iconfont": "^6.1.0",
+        "vue-chartist": "^2.3.1",
         "vue-router": "^3.5.1",
         "vuetify": "^2.4.5",
         "vuetify-loader": "^1.7.2"
